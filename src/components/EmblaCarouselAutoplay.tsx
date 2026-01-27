@@ -1,38 +1,38 @@
-import { useEffect } from "react";
-import { EmblaOptionsType } from "embla-carousel";
-import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
+// import { useEffect } from "react";
+// import { EmblaOptionsType } from "embla-carousel";
+// import Autoplay from "embla-carousel-autoplay";
+// import useEmblaCarousel from "embla-carousel-react";
 
-type PropType = {
-  slides: number[];
-  options?: EmblaOptionsType;
-};
+// type PropType = {
+//   slides: number[];
+//   options?: EmblaOptionsType;
+// };
 
-const EmblaCarouselAutoplay = (props: PropType) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
+// const EmblaCarouselAutoplay = (props: PropType) => {
+//   const { slides, options } = props;
+//   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    const autoplay = emblaApi?.plugins()?.autoplay;
-    if (!autoplay) return;
+//   useEffect(() => {
+//     if (!emblaApi) return;
+//     const autoplay = emblaApi?.plugins()?.autoplay;
+//     if (!autoplay) return;
 
-    autoplay.play();
-  }, [emblaApi]);
+//     autoplay.play();
+//   }, [emblaApi]);
 
-  return (
-    <section className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__number">{index + 1}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//   return (
+//     <section className="embla">
+//       <div className="embla__viewport" ref={emblaRef}>
+//         <div className="embla__container">
+//           {slides.map((index) => (
+//             <div className="embla__slide" key={index}>
+//               <div className="embla__slide__number">{index + 1}</div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
-export default EmblaCarouselAutoplay;
+// export default EmblaCarouselAutoplay;
