@@ -1,5 +1,14 @@
-import { BiderSeven, BiderTwo, NFT } from "../assets";
-import { NftCard } from "../components";
+import {
+  BiderFive,
+  BiderFour,
+  BiderOne,
+  BiderSeven,
+  BiderSix,
+  BiderThree,
+  BiderTwo,
+  NFT,
+} from "../assets";
+import { CreatorCard, NftCard } from "../components";
 import { FaWallet } from "react-icons/fa";
 import { BsFillFileTextFill } from "react-icons/bs";
 import type { IconType } from "react-icons";
@@ -13,7 +22,91 @@ interface TrendBidItem {
   bgColor: string;
 }
 
+interface RecentActivityItem {
+  id: number;
+  biderImage: string;
+  biderName: string;
+  action: string;
+  time: string;
+}
+
 const Home = () => {
+  const creators = [
+    {
+      id: 1,
+      image: BiderTwo,
+      name: "John Abraham",
+      itemAmount: "18 Items",
+    },
+    {
+      id: 2,
+      image: BiderThree,
+      name: "Sarah Wilson",
+      itemAmount: "24 Items",
+    },
+    {
+      id: 3,
+      image: BiderOne,
+      name: "Michael Lee",
+      itemAmount: "12 Items",
+    },
+    {
+      id: 4,
+      image: BiderFive,
+      name: "Jack Lee",
+      itemAmount: "7 Items",
+    },
+    {
+      id: 5,
+      image: BiderSeven,
+      name: "Lola Smith",
+      itemAmount: "12 Items",
+    },
+    {
+      id: 6,
+      image: BiderFour,
+      name: "Michael Lee",
+      itemAmount: "12 Items",
+    },
+  ];
+
+  const recentActivityItem: RecentActivityItem[] = [
+    {
+      id: 1,
+      biderImage: BiderSix,
+      biderName: "Maya",
+      action: "placed a bid",
+      time: "5 mins ago",
+    },
+    {
+      id: 2,
+      biderImage: BiderFive,
+      biderName: "DeSalaf",
+      action: "Sent you a bid",
+      time: "8 mins ago",
+    },
+    {
+      id: 3,
+      biderImage: BiderFour,
+      biderName: "Pytho",
+      action: "purchased",
+      time: "10 mins ago",
+    },
+    {
+      id: 4,
+      biderImage: BiderThree,
+      biderName: "DeSalaf",
+      action: "placed a bid",
+      time: "12 mins ago",
+    },
+    {
+      id: 5,
+      biderImage: BiderTwo,
+      biderName: "DeSalaf",
+      action: "placed a bid",
+      time: "16 mins ago",
+    },
+  ];
   const trendBidItem: TrendBidItem[] = [
     {
       id: 1,
@@ -194,30 +287,38 @@ const Home = () => {
               <h2 className="text-white light:text-black font-semibold text-lg md:text-xl lg:text-2xl">
                 Recent Activity
               </h2>
-              <button className="text-[#6F4FF2] text-sm md:text-base lg:text-lg font-semibold">
+              <button className="text-[#6F4FF2] text-sm md:text-base lg:text-lg font-semibold cursor-pointer">
                 See more
               </button>
             </div>
-            <div className="mt-4 w-full bg-[#1D1932] light:bg-white  rounded-lg h-60 py-4 shadow-lg">
-              <div className="w-full border-b border-b-[#dadada] pb-2">
+            <div className="mt-4 w-full bg-[#1D1932] light:bg-white  rounded-lg py-4 shadow-lg">
+              <div className="w-full ">
                 <div className="w-[92%] mx-auto ">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={BiderSeven}
-                        alt="bider"
-                        className="w-9 h-9 rounded-full"
-                      />
-                      <div className="text-white light:text-black">
-                        <h3 className="text-base md:text-lg font-semibold">
-                          Papaya
-                        </h3>
-                        <p className="text-xs md:text-sm lg:text-base font-semibold">
-                          Purchase by you for 0.05ETH
-                        </p>
+                  {recentActivityItem.map((item) => (
+                    <div
+                      className="flex items-center justify-between border-b border-b-[#dadada] pb-2"
+                      key={item.id}
+                    >
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={item.biderImage}
+                          alt={`{item.biderName}-icon`}
+                          className="w-9 h-9 rounded-full"
+                        />
+                        <div className="text-white light:text-black">
+                          <h3 className="text-base md:text-lg font-semibold">
+                            {item.biderName}
+                          </h3>
+                          <p className="text-xs md:text-sm lg:text-base font-semibold">
+                            {item.action}
+                          </p>
+                        </div>
                       </div>
+                      <p className="text-white light:text-black text-xs md:text-sm lg:text-base font-semibold">
+                        {item.time}
+                      </p>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -226,7 +327,11 @@ const Home = () => {
             <h2 className="text-white light:text-black font-semibold text-lg md:text-xl lg:text-2xl">
               Top Creators
             </h2>
-            <div className="bg-[#1D1932] light:bg-white rounded-lg h-60 mt-4"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              {creators.map((item) => (
+                <CreatorCard key={item.id} {...item} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
