@@ -3,3 +3,4 @@ export { default as Topbar } from "./Topbar";
 export { default as Mobilebar } from "./Mobilebar";
 export { default as NftCard } from "./NftCard";
 export { default as CreatorCard } from "./CreatorCard";
+export { default as Table } from "./Table";

@@ -7,11 +7,15 @@ import {
   BiderThree,
   BiderTwo,
   NFT,
+  NFT2,
+  NFT3,
 } from "../assets";
-import { CreatorCard, NftCard } from "../components";
+import { CreatorCard, NftCard, Table } from "../components";
 import { FaWallet } from "react-icons/fa";
 import { BsFillFileTextFill } from "react-icons/bs";
 import type { IconType } from "react-icons";
+import type { BidRow } from "../components/BidDummy";
+import { useState } from "react";
 
 interface TrendBidItem {
   id: number;
@@ -29,8 +33,75 @@ interface RecentActivityItem {
   action: string;
   time: string;
 }
+type TabType = "all" | "art work" | "books";
 
 const Home = () => {
+  const [activeTab, setActiveTab] = useState<TabType>("all");
+  const bidTableData: BidRow[] = [
+    {
+      id: 1,
+      item: { image: NFT, title: "Cute Cube", author: "John Abraham" },
+      openPrice: "2.50 ETH",
+      yourOffer: "2.00 ETH",
+      recentOffer: { image: BiderFive, price: "1.50 ETH" },
+      timeLeft: "12:10:45",
+      action: "Ended",
+    },
+    {
+      id: 2,
+      item: { image: NFT2, title: "Meta Monkey", author: "Alex Brown" },
+      openPrice: "1.80 ETH",
+      yourOffer: "1.20 ETH",
+      recentOffer: { image: BiderFive, price: "1.40 ETH" },
+      timeLeft: "05:22:10",
+      action: "Bid Now",
+    },
+    {
+      id: 3,
+      item: { image: NFT3, title: "Crypto Punky", author: "Sarah Lee" },
+      openPrice: "3.10 ETH",
+      yourOffer: "2.70 ETH",
+      recentOffer: { image: BiderFive, price: "2.90 ETH" },
+      timeLeft: "01:45:30",
+      action: "Live",
+    },
+    {
+      id: 4,
+      item: { image: NFT, title: "Pixel Art", author: "Michael Doe" },
+      openPrice: "0.95 ETH",
+      yourOffer: "0.80 ETH",
+      recentOffer: { image: BiderFive, price: "0.90 ETH" },
+      timeLeft: "08:15:00",
+      action: "Bid Now",
+    },
+    {
+      id: 5,
+      item: { image: NFT2, title: "Cyber Skull", author: "Jane Smith" },
+      openPrice: "4.20 ETH",
+      yourOffer: "3.90 ETH",
+      recentOffer: { image: BiderFive, price: "4.00 ETH" },
+      timeLeft: "00:59:12",
+      action: "Ending",
+    },
+    {
+      id: 6,
+      item: { image: NFT3, title: "Rare Ape", author: "Chris Evans" },
+      openPrice: "5.00 ETH",
+      yourOffer: "4.50 ETH",
+      recentOffer: { image: BiderFive, price: "4.80 ETH" },
+      timeLeft: "14:20:00",
+      action: "Live",
+    },
+    {
+      id: 7,
+      item: { image: NFT, title: "Neon World", author: "Tony Stark" },
+      openPrice: "2.30 ETH",
+      yourOffer: "2.10 ETH",
+      recentOffer: { image: BiderFive, price: "2.20 ETH" },
+      timeLeft: "06:40:55",
+      action: "Bid Now",
+    },
+  ];
   const creators = [
     {
       id: 1,
@@ -215,11 +286,17 @@ const Home = () => {
           <h2 className="text-lg  text-white light:text-black md:text-xl lg:text-2xl font-semibold">
             Trending NFTs
           </h2>
-          <div className="flex items-center gap-x-2 md:gap-x-4">
-            {["All", "Art work", "Books"].map((item, index) => (
+          <div className="flex items-center gap-x-2 md:gap-x-2">
+            {(["all", "art work", "books"] as TabType[]).map((item) => (
               <button
-                className="text-sm md:text-base lg:text-lg text-[#6F4FF2]"
-                key={index}
+                key={item}
+                onClick={() => setActiveTab(item)}
+                className={` py-0.5 rounded-lg cursor-pointer capitalize text-xs font-semibold md:text-sm lg:text-base transition-all duration-200
+        ${
+          activeTab === item
+            ? "bg-[#6F4FF2] text-white px-3"
+            : "bg-transparent text-white light:text-black"
+        }`}
               >
                 {item}
               </button>
@@ -333,6 +410,14 @@ const Home = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+      <section className="w-full my-12">
+        <h2 className="text-white light:text-black font-semibold text-lg  md:text-xl lg:text-2xl ">
+          Active Bids
+        </h2>
+        <div className="mt-6">
+          <Table data={bidTableData} />
         </div>
       </section>
     </div>

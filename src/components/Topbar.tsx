@@ -13,7 +13,7 @@ interface TopbarProps {
 
 const Topbar = ({ isLightMode, setIsLightMode }: TopbarProps) => {
   return (
-    <div className="w-full pt-0.5 md:pt-2 bg-[#131129] light:bg-[#F2F2F2]">
+    <div className="w-full bg-[#131129] light:bg-[#F2F2F2]">
       <div className="w-[95%] mx-auto py-2 flex items-center justify-between">
         <NavLink
           to="/"

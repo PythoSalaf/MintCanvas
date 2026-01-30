@@ -27,11 +27,11 @@ const Layout = () => {
 
       <div className="w-full ml-auto md:w-[93%] lg:w-[95%]">
         <div className="w-[95%] mx-auto">
-          <div className="fixed top-0 right-0 w-full md:w-[93%] lg:w-[95%] ml-auto">
+          <div className="fixed top-0 right-0  z-50 w-full md:w-[93%] lg:w-[95%] ml-auto">
             <Topbar isLightMode={isLightMode} setIsLightMode={setIsLightMode} />
           </div>
 
-          <div className="pt-14 md:pt-16 lg:pt-20 pb-6">
+          <div className="pt-14  lg:pt-16 pb-6">
             <Outlet />
           </div>
           <div className="block fixed bottom-0 left-0 w-full md:hidden">
