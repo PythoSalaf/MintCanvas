@@ -34,7 +34,7 @@ const Layout = () => {
           <div className="pt-14  lg:pt-16 pb-6">
             <Outlet />
           </div>
-          <div className="block fixed bottom-0 left-0 w-full md:hidden">
+          <div className="block fixed z-50 bottom-0 left-0 w-full md:hidden">
             <Mobilebar />
           </div>
         </div>

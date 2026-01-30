@@ -12,7 +12,7 @@ const Saved = () => {
           Home / Saved
         </h4>
       </div>
-      <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7 ">
+      <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7 mb-10 md:mb-0">
         <NftCard />
         <NftCard />
         <NftCard />

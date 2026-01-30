@@ -152,7 +152,7 @@ const Bid = () => {
             place a bid
           </button>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 mb-8 md:mb-0">
           <Table data={bidTableData} />
         </div>
       </div>
