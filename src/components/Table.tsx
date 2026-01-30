@@ -41,11 +41,11 @@ const Table: React.FC<TableProps> = ({ data }) => {
                 <td className="px-4 py-3 whitespace-nowrap">{row.id}</td>
 
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1 md:gap-3">
                     <img
                       src={row.item.image}
                       alt={row.item.title}
-                      className="w-9 h-9 rounded-xl"
+                      className="w-6 h-7 md:w-9 md:h-9 rounded-xl"
                     />
                     <div>
                       <p className="font-semibold text-xs md:text-sm lg:text-base">
